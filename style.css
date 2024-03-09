@@ -19,6 +19,7 @@ body {
 } */
 
 .image_text_pair {
+    width: 100%;
     color: #000000;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
@@ -162,4 +163,104 @@ h1 {
 
 .button-link a {
     color:black !important;
+}
+
+.dragon_description {
+    width: 100%;
+    color: #000000;
+    background-color: #000000;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dragon_description_light {
+    width: 100%;
+    color: #000000;
+    background-color: #d2d2d2;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.light_theme {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color:#d2d2d2;
+    color:#000000;
+
+}
+
+.light_theme_img {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color:#d2d2d2;
+    color:#000000;
+
+}
+
+.light_body{
+    background-color: #d2d2d2;
+}
+
+@media only screen and (max-width: 600px) {
+
+.image_text_pair {
+    width: 100%;
+    color: #000000;
+    background-color: #000000;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    flex-direction:column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.dragon_description {
+    width: 100%;
+    color: #000000;
+    background-color: #000000;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dragon_description_light {
+    width: 90%;
+    color: #000000;
+    background-color: #d2d2d2;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
 }
