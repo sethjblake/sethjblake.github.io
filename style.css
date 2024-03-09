@@ -3,10 +3,27 @@ body {
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 h1 {
+    width: 100%;
     text-align: center;
-    color: #f5f5c1;
+    color: rgb(255, 255, 255);
+}
+
+.block {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#ffffff;
+    color:#000000;
+}
+.video_container{
+    width: 90%;
+    height: 500 px;
+}
+
+.pic {
+    width: 100%;
 }
