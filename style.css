@@ -219,7 +219,7 @@ h1 {
 @media only screen and (max-width: 600px) {
 
 .image_text_pair {
-    width: 100%;
+    width: 90%;
     color: #000000;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
@@ -235,7 +235,7 @@ h1 {
 
 
 .dragon_description {
-    width: 100%;
+    width: 90%;
     color: #000000;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
