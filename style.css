@@ -240,7 +240,6 @@ h1 {
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
-    flex-direction:column;
     justify-content: center;
     align-items: center;
     margin: 10px;
