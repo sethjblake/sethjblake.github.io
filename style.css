@@ -2,8 +2,11 @@ body {
     color: #ffffff;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
 h1 {
-    color: #ffffff;
+    text-align: center;
+    color: #f5f5c1;
 }
