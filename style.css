@@ -5,7 +5,36 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin:0;
 }
+
+.title_bar {
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+/* .title_bar:hover {
+    background-color: rgb(39, 39, 39);
+} */
+
+.image_text_pair {
+    color: #000000;
+    background-color: #000000;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.testing {
+    background-color: green;
+}
+
 
 h1 {
     width: 100%;
@@ -16,12 +45,19 @@ h1 {
 .block {
     padding-left: 20px;
     padding-right: 20px;
-    background-color:#ffffff;
-    color:#000000;
+    background-color:#000000;
+    color:#ffffff;
 }
-.video_container{
-    width: 90%;
-    height: 500 px;
+
+.product_link {
+    color:rgb(43, 236, 120);
+}
+.product_link:hover{
+    color:#ffffff;
+}
+
+.spacer {
+    margin:200 px;
 }
 
 .pic {
@@ -40,9 +76,88 @@ h1 {
     margin: 5px;
 }
 
+.red_link {
+    background-color: rgb(231, 14, 14);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+    margin: 10px;
+}
+
+.red_link:hover {
+    color:rgb(231, 14, 14);
+    background-color: white;
+}
+
+.orange_link {
+    background-color: rgb(231, 137, 14);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+    margin: 5px;
+}
+
+.orange_link:hover {
+    color:rgb(231, 137, 14);
+    background-color: white;
+}
+
+.green_link {
+    background-color: rgb(68, 231, 14);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+    margin: 5px;
+}
+
+.green_link:hover {
+    color:rgb(68, 231, 14);
+    background-color: white;
+}
+
+.my_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.blue_link {
+    background-color: rgb(14, 151, 231);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+    margin: 5px;
+}
+
+.blue_link:hover {
+    color:rgb(14, 151, 231);
+    background-color: white;
+}
+
+.my_link {
+    color:aqua;
+}
+.my_link:hover{
+    color:white;
+}
+
 .button-link:hover {
     background-color: rgb(170, 255, 0);
     color: rgb(255, 255, 255);
+}
+.header_button {
+    text-decoration: none;
 }
 
 .button-link a {
