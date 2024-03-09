@@ -19,7 +19,7 @@ body {
 } */
 
 .image_text_pair {
-    width: 100%;
+    width: 90%;
     color: #000000;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
@@ -38,7 +38,7 @@ body {
 
 
 h1 {
-    width: 100%;
+    width: 90%;
     text-align: center;
     color: rgb(255, 255, 255);
 }
@@ -166,12 +166,27 @@ h1 {
 }
 
 .dragon_description {
-    width: 100%;
+    width: 90%;
     color: #000000;
     background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main_vid {
+    width: 90%;
+    color: #000000;
+    background-color: #000000;
+    font-family: Tahoma, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin: 10px;
     padding-top: 40px;
