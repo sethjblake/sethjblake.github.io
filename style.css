@@ -8,6 +8,11 @@ body {
     margin:0;
 }
 
+h3 {
+    font-style:italic;
+    color: rgb(87, 87, 87);
+}
+
 .title_bar {
     color: white;
     background-color: black;
@@ -204,13 +209,13 @@ h1 {
     align-items: center;
     margin: 10px;
     padding-top: 40px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .light_theme {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
     padding-bottom: 20px;
     background-color:#d2d2d2;
     color:#000000;
