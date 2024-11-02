@@ -1,6 +1,6 @@
 body {
-    color: #000000;
-    background-color: white;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -8,8 +8,41 @@ body {
     margin:0;
 }
 
+a {
+    color: rgb(255, 255, 255);
+}
+
+.rounded{
+    border-radius: 70px;
+}
+
+#Background_B{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgb(0, 0, 0)), url('titan_banner.png');
+    background-size: cover;      /* Makes the image cover the entire element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center;  /* Centers the image within the element */
+}
+
+#Background_A{
+    background-image: linear-gradient(rgb(0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('home-square-AnneVTakiya.png');
+    background-size: cover;      /* Makes the image cover the entire element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center;  /* Centers the image within the element */
+}
+
+#Background_C{
+    background-image: linear-gradient(rgb(0, 0, 0), rgba(168, 20, 20, 0.5)), url('dragon_breeds_overworld_card_game.png');
+    background-size: cover;      /* Makes the image cover the entire element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center;  /* Centers the image within the element */
+}
+
+.red_background{
+    background-color: rgb(228, 34, 34);/* Centers the image within the element */
+}
+
 .home_page_text {
-    width: 70%;
+    width: 60%;
     text-align: center;
     align-content: center;
 }
@@ -56,7 +89,7 @@ section{
     display: grid;
     place-items: center;
     align-content: center;
-    min-height: 100vh;
+    min-height: 70vh;
     padding-bottom: 10vh;
 }
 
@@ -278,7 +311,7 @@ h1 {
 .dragon_description_light {
     width: 100%;
     color: #000000;
-    background-color: #d2d2d2;
+    background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -293,7 +326,7 @@ h1 {
     padding-left: 20%;
     padding-right: 20%;
     padding-bottom: 20px;
-    background-color:#d2d2d2;
+    background-color:#000000;
     color:#000000;
 
 }
@@ -303,13 +336,13 @@ h1 {
     padding-right: 20px;
     padding-top:10px;
     padding-bottom: 10px;
-    background-color:#d2d2d2;
+    background-color:#000000;
     color:#000000;
 
 }
 
 .light_body{
-    background-color: #d2d2d2;
+    background-color: #000000;
 }
 
 @media only screen and (max-width: 600px) {
@@ -347,7 +380,7 @@ h1 {
 .dragon_description_light {
     width: 90%;
     color: #000000;
-    background-color: #d2d2d2;
+    background-color: #000000;
     font-family: Tahoma, Arial, sans-serif;
     display: flex;
     flex-direction: column;
