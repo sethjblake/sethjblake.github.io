@@ -5,12 +5,326 @@ const ticker = document.getElementById("ticker");
 const boop = document.getElementById("boop");
 
 let category_ID = 3;
-let NUM_CATEGORIES = 4;
+let NUM_CATEGORIES = 5;
 
-let CATEGORIES = ["Geeky", "Kids Shows", "Random", "Christianity"];
+let CATEGORIES = ["Geeky", "Kids Shows", "Random", "Christianity", "Greater Outdoors"];
 
 // Access the button with the ID "next"
 const nextButton = document.getElementById("next");
+
+const greater_outdoors = [
+  "mammal", "reptile", "amphibian", "fish", "bird", "insect", "arachnid", "crustacean", "mollusk", "echinoderm",
+  "coral", "algae", "fungus", "bacterium", "virus", "plankton", "tree", "shrub", "vine", "flower",
+  "seed", "pollen", "nut", "fruit", "herbivore", "carnivore", "omnivore", "predator", "prey", "scavenger",
+  "detritivore", "ecosystem", "habitat", "biome", "climate", "forest", "savanna", "desert", "tundra", "wetland",
+  "river", "stream", "lake", "ocean", "sea", "island", "continent", "mountain", "valley", "canyon",
+  "plateau", "plain", "grassland", "arctic", "rainforest", "canopy", "understory", "soil", "rock", "mineral",
+  "fossil", "extinction", "evolution", "adaptation", "mutation", "genetics", "chromosome", "gene", "DNA", "RNA",
+  "species", "genus", "family", "order", "class", "phylum", "kingdom", "domain", "taxonomy", "binomial",
+  "niche", "symbiosis", "parasitism", "mutualism", "commensalism", "migration", "hibernation", "estivation", "nocturnal", "diurnal",
+  "crepuscular", "population", "community", "food chain", "food web", "primary producer", "consumer", "decomposer", "herbivory", "predation",
+  "competition", "pollination", "seed dispersal", "biodiversity", "conservation", "ecology", "photosynthesis", "respiration", "chlorophyll", "stomata",
+  "transpiration", "carbon cycle", "nitrogen cycle", "water cycle", "energy flow", "keystone species", "indicator species", "invasive species", "native species", "endangered species",
+  "threatened species", "extinct species", "wildlife", "flora", "fauna", "faunal", "arboreal", "terrestrial", "aquatic", "aerial",
+  "freshwater", "marine", "brackish", "polar", "tropical", "temperate", "boreal", "alpine", "deciduous", "evergreen",
+  "conifer", "broadleaf", "seedless", "flowering", "fruiting", "paleontology", "meteorology", "hydrology", "geology", "biology",
+  "zoology", "botany", "entomology", "ornithology", "ichthyology", "herpetology", "mycology", "taxonomy", "phytoplankton", "zooplankton",
+  "biodome", "biosphere", "ecotone", "ecotype", "endemic", "ephemeral", "annual", "perennial", "biennial", "monocot",
+  "dicot", "gymnosperm", "angiosperm", "heterotroph", "autotroph", "producer", "consumer", "parasite", "host", "epiphyte",
+  "lichen", "moss", "fern", "bryophyte", "pteridophyte", "eukaryote", "prokaryote", "unicellular", "multicellular", "plasma membrane",
+  "cytoplasm", "organelle", "mitochondria", "chloroplast", "ribosome", "nucleus", "golgi apparatus", "endoplasmic reticulum", "vacuole", "flagella",
+  "cilia", "cell wall", "cellulose", "chitin", "protein", "enzyme", "lipid", "carbohydrate", "nucleic acid", "synthesis",
+  "degradation", "homeostasis", "metabolism", "anabolism", "catabolism", "reproduction", "asexual reproduction", "sexual reproduction", "fertilization", "zygote",
+  "embryo", "larva", "pupa", "nymph", "metamorphosis", "molting", "endoskeleton", "exoskeleton", "vertebrate", "invertebrate",
+  "cartilage", "bone", "muscle", "ligament", "tendon", "skin", "scale", "feather", "fur", "spine",
+  "claw", "hoof", "antler", "horn", "beak", "snout", "trunk", "tail", "fin", "gill",
+  "lung", "heart", "liver", "kidney", "stomach", "intestine", "bladder", "brain", "nerve", "eye",
+  "ear", "nose", "tongue", "tooth", "whisker", "sense", "smell", "taste", "sight", "hearing",
+  "touch", "echolocation", "magnetoreception", "thermoregulation", "endotherm", "ectotherm", "poikilotherm", "homeotherm", "mimicry", "camouflage",
+  "cryptic coloration", "aposematism", "warning coloration", "countershading", "bipedal", "quadrupedal", "arboreal", "fossorial", "cursorial", "volant",
+  "herding", "flocking", "shoaling", "schooling", "social", "solitary", "territorial", "communal", "dominance hierarchy", "matriarchy",
+  "patriarchy", "polyandry", "polygyny", "monogamy", "promiscuity", "courtship", "nesting", "den", "burrow", "lair",
+    // Sea creatures
+    "whale", "dolphin", "shark", "ray", "octopus", "squid", "jellyfish", "coral", "seahorse", "sea turtle",
+    "manatee", "dugong", "seal", "sea lion", "walrus", "crab", "lobster", "shrimp", "prawn", "krill",
+    "starfish", "sea urchin", "sea cucumber", "anemone", "barnacle", "mussel", "clam", "oyster", "scallop", "nudibranch",
+    "eel", "moray eel", "anglerfish", "grouper", "tuna", "marlin", "barracuda", "swordfish", "flounder", "halibut",
+    "haddock", "cod", "snapper", "lionfish", "pufferfish", "stonefish", "parrotfish", "wrasse", "blenny", "goby",
+    "manta ray", "stingray", "electric eel", "gulper eel", "lanternfish", "snipe eel", "coelacanth", "isopod", "amphipod", "copepod",
+    "plankton", "zooplankton", "phytoplankton", "marine worm", "polychaete", "arrow worm", "comb jelly", "cuttlefish", "nautilus", "blue tang",
+    "clownfish", "butterflyfish", "surgeonfish", "damselfish", "triggerfish", "goby", "blenny", "pipefish", "sea dragon", "nudibranch",
+    "hermit crab", "fiddler crab", "box crab", "spiny lobster", "cleaner shrimp", "mantis shrimp", "sand dollar", "brittle star", "basket star", "sea pen",
+  
+    // Habitats
+    "coral reef", "kelp forest", "seagrass meadow", "open ocean", "deep sea", "abyssal plain", "hydrothermal vent", "cold seep", "continental shelf", "continental slope",
+    "intertidal zone", "subtidal zone", "pelagic zone", "benthic zone", "bathypelagic zone", "mesopelagic zone", "epipelagic zone", "hadal zone", "oceanic trench", "seamount",
+    "atoll", "lagoon", "estuary", "salt marsh", "mangrove forest", "mudflat", "rocky shore", "sandy beach", "polar sea", "Arctic Ocean",
+    "Antarctic Ocean", "Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Southern Ocean", "Caribbean Sea", "Mediterranean Sea", "Red Sea", "Gulf of Mexico", "Bay of Bengal",
+    "coral polyps", "reef crest", "reef slope", "fore reef", "reef flat", "lagoon reef", "fringing reef", "barrier reef", "platform reef", "marine protected area",
+  
+    // Sea creature adaptations and features
+    "gills", "fins", "tentacles", "beak", "camouflage", "bioluminescence", "countershading", "filter feeding", "echolocation", "cartilaginous skeleton",
+    "baleen", "barnacle plates", "chromatophores", "electric organs", "hydrodynamics", "osmoregulation", "swim bladder", "shell", "mucous layer", "radula",
+  
+    // Additional marine ecology
+    "food chain", "marine ecosystem", "tide pool", "nursery ground", "spawning", "planktonic", "nekton", "sessile", "detritus", "algae bloom",
+    // General plant types
+  "tree", "shrub", "herb", "grass", "vine", "ferns", "moss", "algae", "lichen", "succulent",
+  "cactus", "bamboo", "palm", "flower", "orchid", "wildflower", "weed", "crop", "bulb", "root",
+
+  // Plant parts
+  "stem", "leaf", "flower", "petal", "sepal", "pistil", "stamen", "anther", "ovary", "fruit",
+  "seed", "nut", "cone", "spore", "bud", "bark", "trunk", "branch", "twig", "root system",
+  "taproot", "fibrous root", "rhizome", "tuber", "corm", "tendril", "thorn", "spine", "leaflet", "frond",
+
+  // Types of flowers and leaves
+  "simple leaf", "compound leaf", "needle", "scale", "broadleaf", "evergreen", "deciduous", "monoecious", "dioecious", "pinnate",
+  "palmate", "lobed", "entire", "serrated", "toothed", "parallel venation", "netted venation", "inflorescence", "umbel", "raceme",
+
+  // Plant categories by reproduction
+  "angiosperm", "gymnosperm", "spore-bearing", "seed-bearing", "pollinator-attracting", "wind-pollinated", "self-pollinating", "cross-pollinating", "fertilization", "germination",
+
+  // Plant categories by environment
+  "aquatic plant", "terrestrial plant", "epiphyte", "halophyte", "xerophyte", "hydrophyte", "mesophyte", "shade-tolerant", "sun-loving", "succulent",
+
+  // Plant types by use
+  "crop plant", "medicinal plant", "ornamental plant", "timber", "forage plant", "cover crop", "nitrogen fixer", "food crop", "fiber plant", "spice plant",
+
+  // Plant life processes
+  "photosynthesis", "respiration", "transpiration", "pollination", "fertilization", "seed dispersal", "propagation", "vegetative reproduction", "regeneration", "dormancy",
+
+  // Plant ecology and habitats
+  "rainforest", "savanna", "grassland", "desert", "tundra", "wetland", "bog", "marsh", "swamp", "mangrove forest",
+  "alpine", "temperate forest", "tropical forest", "deciduous forest", "coniferous forest", "prairie", "steppe", "meadow", "arid zone", "riparian zone",
+
+  // Examples of plants
+  "oak", "maple", "pine", "cedar", "spruce", "birch", "willow", "elm", "sycamore", "ash",
+  "rose", "daisy", "sunflower", "tulip", "lily", "daffodil", "iris", "peony", "lavender", "marigold",
+  "carnation", "poppy", "hibiscus", "bougainvillea", "magnolia", "cherry blossom", "azalea", "camellia", "rhododendron", "hydrangea",
+  "grass", "wheat", "corn", "rice", "barley", "rye", "oat", "sorghum", "sugarcane", "bamboo",
+  "aloe vera", "agave", "cactus", "ficus", "palm tree", "mango tree", "banana plant", "papaya tree", "coconut palm", "olive tree",
+
+  // Additional terms
+  "chlorophyll", "stomata", "vascular system", "xylem", "phloem", "growth ring", "sap", "pollen", "nectar", "fertilizer",
+  "compost", "mulch", "humus", "loam", "peat", "peat moss", "green manure", "cover cropping", "grafting", "pruning",
+  "seedling", "sapling", "mature tree", "flowering plant", "fruiting plant", "perennial", "annual", "biennial", "monocot", "dicot",
+  // Celestial objects
+  "star", "planet", "moon", "comet", "asteroid", "meteoroid", "meteor", "meteorite", "dwarf planet", "exoplanet",
+  "nebula", "black hole", "pulsar", "quasar", "white dwarf", "red dwarf", "brown dwarf", "neutron star", "supernova", "hypernova",
+  "galaxy", "spiral galaxy", "elliptical galaxy", "irregular galaxy", "star cluster", "open cluster", "globular cluster", "binary star", "trinary star", "protoplanetary disk",
+  "asteroid belt", "kuiper belt", "oort cloud", "event horizon", "singularity", "cosmic ray", "gamma ray burst", "dark matter", "dark energy", "cosmic microwave background",
+
+  // Planets and planetary features
+  "terrestrial planet", "gas giant", "ice giant", "ring system", "planetary atmosphere", "magnetosphere", "cryovolcano", "impact crater", "volcano", "canyon",
+  "mountain", "valley", "ocean", "ice cap", "desert", "lava flow", "plate tectonics", "aurora", "storm system", "dust storm",
+
+  // Solar System terms
+  "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto",
+  "Titan", "Europa", "Ganymede", "Callisto", "Io", "Enceladus", "Triton", "Charon", "Ceres", "Eris",
+  "Makemake", "Haumea", "Vesta", "Pallas", "Hygiea", "Oumuamua", "Halley's Comet", "Comet Hale-Bopp", "Shoemaker-Levy 9", "Great Red Spot",
+
+  // Galactic and intergalactic terms
+  "Milky Way", "Andromeda", "Large Magellanic Cloud", "Small Magellanic Cloud", "Local Group", "Virgo Cluster", "Supercluster", "Great Attractor", "interstellar medium", "intergalactic space",
+
+  // Astronomical distances and measurements
+  "light-year", "parsec", "astronomical unit", "redshift", "parallax", "apparent magnitude", "absolute magnitude", "luminosity", "albedo", "orbital period",
+  "eccentricity", "inclination", "perihelion", "aphelion", "periapsis", "apoapsis", "escape velocity", "rotation period", "precession", "nutation",
+
+  // Observational astronomy
+  "telescope", "observatory", "radio telescope", "space telescope", "spectroscopy", "photometry", "astrometry", "infrared astronomy", "X-ray astronomy", "gamma-ray astronomy",
+  "stellar classification", "Hertzsprung-Russell diagram", "light curve", "transit method", "Doppler shift", "gravitational lensing", "cosmic inflation", "Big Bang", "expansion of the universe", "cosmology",
+
+  // Space exploration
+  "satellite", "space probe", "rover", "lander", "spacecraft", "orbiter", "space station", "rocket", "payload", "interstellar travel",
+  "solar sail", "ion propulsion", "gravity assist", "lander", "sample return mission", "colonization", "terraforming", "extraterrestrial life", "SETI", "exobiology",
+
+  // Miscellaneous
+  "constellation", "zodiac", "ecliptic", "celestial equator", "right ascension", "declination", "zenith", "nadir", "solstice", "equinox",
+  "lunar eclipse", "solar eclipse", "transit", "occultation", "tidal force", "gravitational wave", "spacetime", "multiverse", "quantum mechanics", "string theory",
+  // Types of pollution
+  "air pollution", "water pollution", "soil pollution", "noise pollution", "light pollution", "thermal pollution", "radioactive pollution", "plastic pollution", "microplastic pollution", "chemical pollution",
+
+  // Pollutants
+  "carbon dioxide", "methane", "nitrous oxide", "sulfur dioxide", "ozone", "particulate matter", "black carbon", "volatile organic compounds", "chlorofluorocarbons", "heavy metals",
+  "mercury", "lead", "arsenic", "cadmium", "pesticides", "herbicides", "fertilizers", "pharmaceutical waste", "oil spills", "industrial discharge",
+
+  // Environmental issues
+  "deforestation", "desertification", "biodiversity loss", "climate change", "global warming", "acid rain", "ozone layer depletion", "habitat destruction", "ocean acidification", "eutrophication",
+  "overfishing", "coral bleaching", "wildlife extinction", "urban sprawl", "waste mismanagement", "landfill overflow", "resource depletion", "overconsumption", "ecosystem imbalance", "carbon footprint",
+
+  // Renewable and sustainable practices
+  "sustainability", "renewable energy", "solar power", "wind power", "hydropower", "geothermal energy", "biomass", "recycling", "upcycling", "composting",
+  "carbon offset", "carbon capture", "green infrastructure", "reforestation", "afforestation", "organic farming", "permaculture", "sustainable development", "eco-friendly", "circular economy",
+
+  // Conservation efforts
+  "wildlife conservation", "marine conservation", "forest conservation", "energy conservation", "water conservation", "soil conservation", "protected areas", "nature reserves", "national parks", "wildlife corridors",
+
+  // Climate science and policy
+  "greenhouse effect", "carbon emissions", "net zero", "climate mitigation", "climate adaptation", "Paris Agreement", "environmental policy", "emissions trading", "environmental justice", "climate refugees",
+
+  // Waste and recycling
+  "biodegradable", "non-biodegradable", "single-use plastic", "reusable", "waste segregation", "hazardous waste", "electronic waste", "landfill", "incineration", "waste-to-energy",
+  "recycling center", "compost bin", "zero waste", "plastic ban", "bottle deposit scheme", "littering", "ocean cleanup", "waste reduction", "packaging waste", "disposable goods",
+
+  // Renewable resources and alternatives
+  "bamboo", "hemp", "bioplastics", "natural fibers", "alternative energy", "electric vehicles", "solar panels", "wind turbines", "hydroelectric dams", "energy storage",
+
+  // Environmental terms and concepts
+  "ecosystem", "biodiversity", "ecology", "food web", "habitat", "biome", "carbon cycle", "water cycle", "nitrogen cycle", "ecological footprint",
+  "overexploitation", "carrying capacity", "invasive species", "endangered species", "natural resources", "environmental degradation", "ecotourism", "greenwashing", "environmental education", "ecological resilience",
+
+  // Organizations and movements
+  "United Nations Environment Programme", "World Wildlife Fund", "Greenpeace", "Friends of the Earth", "climate strike", "Extinction Rebellion", "Earth Day", "environmental activism", "Clean Air Act", "Endangered Species Act",
+
+  // Miscellaneous
+  "smog", "industrial runoff", "sewage treatment", "stormwater management", "renewable materials", "energy efficiency", "sustainable architecture", "urban gardening", "carbon sink", "green tech",
+  // Adventure sports
+  "rock climbing", "bouldering", "mountaineering", "ice climbing", "caving", "abseiling", "hiking", "trekking", "backpacking", "trail running",
+  "camping", "canoeing", "kayaking", "whitewater rafting", "paddleboarding", "surfing", "windsurfing", "kiteboarding", "sailing", "paragliding",
+  "hang gliding", "skydiving", "base jumping", "zip lining", "mountain biking", "road cycling", "fat biking", "downhill biking", "snowboarding", "skiing",
+  "cross-country skiing", "snowshoeing", "sledding", "dog sledding", "sandboarding", "off-roading", "ATV riding", "dirt biking", "bungee jumping", "zorbing",
+
+  // Nature exploration
+  "birdwatching", "wildlife photography", "stargazing", "geocaching", "orienteering", "foraging", "mushroom hunting", "wildflower identification", "tree climbing", "fossil hunting",
+  "rockhounding", "nature journaling", "landscape painting", "nature sketching", "campfire storytelling", "picnicking", "star photography", "cloud watching", "beachcombing", "tidal pooling",
+
+  // Water-based activities
+  "swimming", "snorkeling", "scuba diving", "deep-sea fishing", "spearfishing", "free diving", "rafting", "boating", "jet skiing", "wakeboarding",
+  "tubing", "cliff diving", "fishing", "ice fishing", "river tracing", "water skiing", "parasailing", "canoe camping", "lake swimming", "rafting expeditions",
+
+  // Climbing and ground activities
+  "rock scrambling", "via ferrata", "alpine climbing", "glacier hiking", "canyon swinging", "canyoneering", "boulder hopping", "trail maintenance", "rope climbing", "tree swinging",
+  "zipline canopy tours", "rope course challenges", "log balancing", "hill scrambling", "tree fort building", "ladder climbing", "natural obstacle courses", "desert hiking", "crag climbing", "rock wall traversing",
+
+  // Team and recreational sports
+  "frisbee", "disc golf", "beach volleyball", "soccer", "flag football", "kickball", "capture the flag", "paintball", "laser tag", "airsoft",
+  "archery", "field archery", "axe throwing", "horseshoes", "cornhole", "tug-of-war", "dodgeball", "badminton", "tennis", "pickleball",
+
+  // Winter activities
+  "snowmobiling", "ice skating", "hockey", "snowball fights", "snow sculpting", "igloo building", "sled racing", "polar plunging", "winter camping", "glacier trekking",
+
+  // Exploration and adventure
+  "safari trips", "desert expeditions", "jungle trekking", "volcano hiking", "glacial expeditions", "whale watching", "dolphin spotting", "waterfall trekking", "hot air ballooning", "scenic flights",
+
+  // Miscellaneous
+  "kite flying", "campfire cooking", "bbqing", "rock stacking", "yoga in nature", "meditation retreats", "outdoor concerts", "forest bathing", "field games", "marathon running",
+  // Weather and Atmospheric Phenomena
+  "thunderstorm", "lightning", "tornado", "hurricane", "cyclone", "typhoon", "blizzard", "sandstorm", "hailstorm", "rainbow",
+  "fog", "mist", "haze", "dew", "frost", "snowflake", "raindrop", "drizzle", "downpour", "monsoon",
+  "drought", "heatwave", "cold snap", "sleet", "ice storm", "wind gust", "chinook", "nor'easter", "aurora borealis", "aurora australis",
+
+  // Geological and Earth Science Terms
+  "volcano", "geyser", "hot spring", "lava flow", "magma chamber", "tectonic plate", "fault line", "rift valley", "mountain range", "canyon",
+  "plateau", "butte", "mesa", "valley", "fjord", "delta", "estuary", "archipelago", "isthmus", "peninsula",
+  "cave", "sinkhole", "stalactite", "stalagmite", "rock formation", "sedimentary rock", "igneous rock", "metamorphic rock", "mineral vein", "ore deposit",
+
+  // River and Waterway Features
+  "river", "stream", "creek", "brook", "tributary", "waterfall", "cascade", "rapids", "current", "eddy",
+  "lake", "pond", "reservoir", "marsh", "swamp", "bog", "lagoon", "aquifer", "spring", "delta plain",
+  "estuaries", "oxbow lake", "floodplain", "riverbank", "watershed", "catchment area", "headwaters", "mouth of a river", "water table", "riparian zone",
+
+  // Unique Ecosystems
+  "rainforest", "savanna", "tundra", "steppe", "desert", "wetland", "mangrove swamp", "kelp forest", "coral reef", "peat bog",
+  "cloud forest", "montane forest", "temperate forest", "alpine meadow", "prairie", "chaparral", "tropical dry forest", "taiga", "fen", "karst system",
+
+  // Celestial and Night Sky Features
+  "constellation", "shooting star", "meteor shower", "eclipse", "supermoon", "blood moon", "harvest moon", "Milky Way", "nebula", "aurora",
+  "comet tail", "planetary alignment", "crescent moon", "gibbous moon", "star trail", "zenith", "nadir", "celestial pole", "orion's belt", "Pleiades",
+
+  // Sounds of Nature
+  "birdsong", "crickets chirping", "frogs croaking", "wind rustling", "leaves crunching", "waves crashing", "rainfall", "thunder", "howling wind", "stream babbling",
+  "owl hooting", "wolf howling", "insects buzzing", "trees creaking", "branches snapping", "fire crackling", "ice cracking", "whale song", "dolphin clicks", "seal barking",
+
+  // Rare Natural Phenomena
+  "bioluminescence", "moonbow", "ice halo", "sun pillar", "green flash", "fogbow", "blue jet lightning", "fire rainbow", "lenticular cloud", "volcanic lightning",
+  "frost flowers", "penitentes", "snow rollers", "ice circles", "brinicle", "supercell", "dust devil", "glory", "sun dog", "starry night",
+
+  // Natural Cycles and Processes
+  "photosynthesis", "evaporation", "condensation", "precipitation", "transpiration", "erosion", "weathering", "sedimentation", "carbon cycle", "water cycle",
+  "rock cycle", "nitrogen cycle", "pollination", "seed dispersal", "decomposition", "germination", "migration", "hibernation", "molting", "spawning",
+
+  // Famous Natural Landmarks
+  "Grand Canyon", "Mount Everest", "Niagara Falls", "Amazon Rainforest", "Great Barrier Reef", "Sahara Desert", "Dead Sea", "Yellowstone National Park", "Galapagos Islands", "Angel Falls",
+  "Mount Fuji", "Ayers Rock (Uluru)", "Antarctic Ice Sheet", "Victoria Falls", "Serengeti Plains", "Lake Baikal", "Kruger National Park", "Mount Kilimanjaro", "Iguazu Falls", "Bora Bora",
+
+  // Essential Survival Needs
+  "shelter", "fire", "water", "food", "survival kit", "emergency signal", "navigation", "knife", "multi-tool", "first aid",
+  "tarp", "paracord", "duct tape", "flint", "steel", "matches", "firestarter", "compass", "map", "GPS device",
+
+  // Finding Food
+  "fishing", "hunting", "foraging", "spearfishing", "trapping", "net making", "fruit identification", "wild edibles", "insect protein", "gathering shellfish",
+  "plant foraging", "scavenging", "seed saving", "coconut harvesting", "bushcraft", "improvised fishing line", "edible roots", "snaring", "berry picking", "mushroom hunting",
+
+  // Water Collection and Purification
+  "rainwater collection", "desalination", "solar still", "boiling water", "filtering water", "water purification tablets", "stream water", "dew collection", "bamboo water", "coconut water",
+  "water sources", "clay pot filtration", "UV purification", "drip irrigation", "distillation", "charcoal filtration", "natural springs", "river water safety", "hydration techniques", "improvised filter",
+
+  // Shelter Building
+  "lean-to", "debris hut", "cave shelter", "bamboo shelter", "treehouse", "tent", "raft", "dugout", "snow cave", "sand trench",
+  "palm frond roof", "rock wall shelter", "windbreak", "thatched roof", "cordage", "improvised tarp", "wattle and daub", "bivouac", "hammock", "ground insulation",
+
+  // Fire Starting
+  "firewood", "tinder", "kindling", "friction fire", "fire plough", "bow drill", "fire piston", "magnifying glass", "pyrite and steel", "fire reflector",
+  "char cloth", "fatwood", "dry leaves", "fire lay", "feather stick", "emergency candles", "signal fires", "waterproof matches", "birch bark", "pine resin",
+
+  // Navigation and Orientation
+  "north star", "moss on trees", "sun position", "landmarks", "trail markers", "rock cairns", "dead reckoning", "azimuth", "natural compasses", "orienteering",
+  "coastal navigation", "ocean currents", "tide tracking", "star charts", "polar axis", "moon phases", "animal tracks", "bird flight paths", "trail blazes", "river direction",
+
+  // Signal and Rescue
+  "SOS signal", "signal mirror", "smoke signal", "signal fire", "whistle", "distress flare", "flagging tape", "airplane signaling", "morse code", "ground markers",
+  "heliograph", "signal flag", "rescue beacon", "emergency flare", "radio transmitter", "satellite phone", "fire triangle", "ground symbols", "distress call", "rescue rope",
+
+  // Defensive Tools and Strategies
+  "self-defense", "improvised spear", "slingshot", "bow and arrow", "booby traps", "perimeter alarm", "sharp stick", "stone throwing", "fire deterrent", "camouflage",
+  "trap pits", "smoke deterrent", "animal repellent", "protective fire circle", "thorn barrier", "fishbone spear", "improvised weapon", "rock sling", "palm spear", "shelter traps",
+
+  // Weather and Climate Challenges
+  "heatstroke prevention", "hypothermia", "wind chill", "sun protection", "rain gear", "improvised poncho", "shade creation", "mud insulation", "snow blindness", "storm shelter",
+  "cold exposure", "UV exposure", "improvised sunscreen", "windproofing", "thermal layers", "rainwater runoff", "storm safety", "frostbite", "waterproof shelter", "hot weather adaptation",
+
+  // Survival Psychology and Techniques
+  "situational awareness", "risk assessment", "calm under pressure", "decision making", "resourcefulness", "improvised tools", "adaptability", "teamwork", "prioritizing tasks", "energy conservation",
+  "tracking skills", "escape routes", "emergency plans", "stress management", "mental resilience", "focus techniques", "confidence building", "wilderness survival training", "visualizing rescue", "problem-solving",
+
+  // Miscellaneous Survival Skills
+  "rope knots", "fireproofing", "improvised footwear", "basket weaving", "log carving", "raft building", "canoe paddling", "signal flag waving", "beachcombing", "improvised fishing pole",
+  "clothing repair", "feather insulation", "snowshoe crafting", "coconut husking", "trail repair", "emergency stretcher", "wound stitching", "animal skinning", "improvised tent pole", "bamboo crafting",
+  "wooden spear", "sharpened stick", "stone-tipped spear", "bone spear", "fire-hardened spear", "bamboo spear", "fish spear", "trident", "obsidian blade", "throwing spear",
+  "club", "stone axe", "slingshot", "bow and arrow", "arrowhead", "spike trap", "sling", "improvised dagger", "blowgun", "thorn whip",
+
+  // Fishing and Hunting Tools
+  "fishing net", "fish hook", "bone hook", "hand line", "harpoon", "improvised fish trap", "crab pot", "fishing spear", "snare trap", "deadfall trap",
+  "bird snare", "pitfall trap", "bolo", "spear gun", "bait holder", "driftwood harpoon", "animal decoy", "lure", "scarecrow", "animal hide tether",
+
+  // Cutting and Carving Tools
+  "stone knife", "bone knife", "sharpening stone", "hand chisel", "wood-carving tool", "shell blade", "coral knife", "flint blade", "obsidian scraper", "split bamboo cutter",
+  "wood shaver", "splitting wedge", "sawfish blade", "improvised drill", "adze", "shell scoop", "fire plough", "whittling stick", "pointed rock", "machete",
+
+  // Containers and Storage
+  "woven basket", "hollowed-out gourd", "bamboo container", "clay pot", "driftwood bowl", "leaf pouch", "shell cup", "water jug", "coconut bowl", "net bag",
+  "palm frond sack", "woven mat", "mud jar", "rope bundle", "bamboo flask", "tree bark pouch", "stone bowl", "improvised canteen", "coconut shell flask", "reed basket",
+
+  // Shelter Tools and Supplies
+  "rope ladder", "vine cordage", "palm frond roof", "bamboo frame", "driftwood supports", "ground stakes", "stone hammer", "improvised nails", "tied lashings", "tarp substitute",
+  "leaf insulation", "woven roof mat", "mud plaster", "cane pole", "tree branch frame", "ground mat", "thorn wall", "coconut husk fiber", "sandbags", "reed fencing",
+
+  // Fire-Making Tools
+  "fire drill", "bow drill", "fire plough", "flint and steel", "magnifying lens", "char cloth", "ember catcher", "bamboo bellows", "fire reflector", "tinder bundle",
+  "feather stick", "fatwood", "dry grass nest", "spark stone", "torch", "charcoal stove", "smoke funnel", "ember holder", "bamboo fire tube", "fire fan",
+
+  // Cooking and Food Prep Tools
+  "cooking spit", "clay oven", "stone griddle", "coconut grater", "palm leaf plate", "rock mortar and pestle", "driftwood skewer", "clay pot cooker", "improvised fork", "shell ladle",
+  "wooden spoon", "reed strainer", "stone grinder", "leaf bowl", "bamboo skewer", "improvised grill", "split log stove", "crab claw tongs", "shell scraper", "bamboo steamer",
+
+  // Navigation and Signal Tools
+  "driftwood compass", "sun dial", "star map", "signal mirror", "smoke signal stack", "bamboo pole flag", "improvised flare", "torch beacon", "ground markers", "floating raft signal",
+  "reflective shell signal", "vine rope trail", "driftwood trail markers", "sand message", "rock cairn", "stacked logs signal", "colored leaf flag", "fire smoke colors", "palm frond streamer", "shiny fish scale signal",
+
+  // Miscellaneous Survival Items
+  "leaf hat", "woven sandals", "palm frond cloak", "bamboo walking stick", "improvised stretcher", "reed whistle", "stone anchor", "driftwood mallet", "coconut husk padding", "leaf fan",
+  "raft", "dugout canoe", "oar", "woven sail", "anchor rope", "reed raft", "bamboo paddle", "wave buoy", "improvised fishing raft", "seaweed rope"
+];
 
 const geeky = [
     "Kiritsugu Emiya",
@@ -619,127 +933,7 @@ const geeky = [
         "The Capitol’s division of wealth",
         "victors",
             "The Power Rangers",
-            "Morphing Grid",
-            "Mighty Morphin Power Rangers",
-            "Zordon",
-            "Alpha 5",
-            "Rita Repulsa",
-            "Lord Zedd",
-            "The Dragonzord",
-            "The Megazord",
-            "Green Ranger",
-            "Red Ranger",
-            "Pink Ranger",
-            "Blue Ranger",
-            "Yellow Ranger",
-            "Black Ranger",
-            "White Ranger",
-            "Tommy Oliver",
-            "Jason Lee Scott",
-            "Kimberly Ann Hart",
-            "Zack Taylor",
-            "Trini Kwan",
-            "Billy Cranston",
-            "Rita’s minions",
-            "The Putty Patrol",
-            "The Thunder Megazord",
-            "The Zeo Crystal",
-            "The Turbo Rangers",
-            "The Space Rangers",
-            "The Lightspeed Rescue Rangers",
-            "Time Force Rangers",
-            "Wild Force Rangers",
-            "Ninja Storm Rangers",
-            "S.P.D. Rangers",
-            "Mystic Force Rangers",
-            "Operation Overdrive Rangers",
-            "Jungle Fury Rangers",
-            "RPM Rangers",
-            "Samurai Rangers",
-            "Megaforce Rangers",
-            "Super Megaforce Rangers",
-            "Dino Charge Rangers",
-            "Dino Super Charge Rangers",
-            "Beast Morphers Rangers",
-            "The Morphing Sequence",
-            "The Command Center",
-            "The Morphers",
-            "The Power Coins",
-            "The Power Blasters",
-            "The Power Sword",
-            "The Dragon Dagger",
-            "The Saber-Tooth Tiger",
-            "The Mastodon",
-            "The Pterodactyl",
-            "The Triceratops",
-            "The Tyrannosaurus Rex",
-            "The Falconzord",
-            "The Titanus",
-            "The Thunderzord",
-            "The Rescue Zords",
-            "The Delta Squad Megazord",
-            "The Time Force Megazord",
-            "The Overdrive Megazord",
-            "The Jungle Pride Megazord",
-            "The RPM Zords",
-            "The Samurai Megazord",
-            "The Ninja Megazord",
-            "The Dino Megazord",
-            "The Dino Thunder Zords",
-            "The Megazord Battle",
-            "The Morphing Grid connection",
-            "The Ranger suits",
-            "The Power Ranger helmets",
-            "The Turbo Megazord",
-            "The S.P.D. Megazord",
-            "The Zords’ power",
-            "The Zeo Megazord",
-            "The Mystic Force Zords",
-            "The Wild Force Zords",
-            "The Black Dragon",
-            "The Gold Zeo Ranger",
-            "The Quantum Ranger",
-            "The Red Space Ranger",
-            "The Blue Time Force Ranger",
-            "The Black Wild Force Ranger",
-            "The Red Samurai Ranger",
-            "The Yellow Ninja Storm Ranger",
-            "The Blue RPM Ranger",
-            "The Green Dino Thunder Ranger",
-            "The Silver Ranger",
-            "The White SPD Ranger",
-            "The Pink Time Force Ranger",
-            "The Gold Samurai Ranger",
-            "The Pink SPD Ranger",
-            "The Ranger powers",
-            "The battle cry",
-            "The Power Rangers movie",
-            "The Morphing Grid power",
-            "The Zord battles",
-            "The Ranger Legacy",
-            "The Super Sentai connection",
-            "The Master Morpher",
-            "The Ranger spirit",
-            "The Power of teamwork",
-            "The Ranger weapons",
-            "The Pink Ranger’s Pterodactyl Zord",
-            "The Red Ranger’s T-Rex Zord",
-            "The Ranger’s fight against evil",
-            "The Shogun Strike",
-            "The Battleizer",
-            "The Ranger’s powers across dimensions",
-            "The Power Rangers franchise",
-            "The Red Ranger’s leadership",
-            "The villainous Rita Repulsa",
-            "The rise of Lord Zedd",
-            "The battle between good and evil",
-            "The return of Tommy Oliver",
-            "The ever-growing Ranger team",
-            "The power of friendship",
-            "The Protectors of Earth",
-            "The Chronicles of Narnia",
-            "Aslan",
-            "Narnia",
+          "The Power of Friendship",
                 "Video Games",
                 "Anime",
                 "Marvel Cinematic Universe (MCU)",
@@ -3024,6 +3218,10 @@ function updateGuessWord() {
         const randomIndex = Math.floor(Math.random() * christianity.length);
         guessWordElement.textContent = christianity[randomIndex]; 
     }
+    else if(category_ID == 4) {
+      const randomIndex = Math.floor(Math.random() * greater_outdoors.length);
+      guessWordElement.textContent = greater_outdoors[randomIndex]; 
+  }
 
   }
 
