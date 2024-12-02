@@ -1,6 +1,8 @@
 // Access the element with the ID "guessWord"
 const guessWordElement = document.getElementById("guessWord");
 const categoryElement = document.getElementById("category");
+const ticker = document.getElementById("ticker");
+const boop = document.getElementById("boop");
 
 let category_ID = 3;
 let NUM_CATEGORIES = 4;
@@ -2995,7 +2997,16 @@ const christianity = [
 // Function to update guessWord with a random string
 function updateGuessWord() {
     // Get a random index
-    
+
+    if(nextButton.textContent != "NEXT") {
+      nextButton.textContent = "NEXT";
+    }
+
+    ticker.play();
+  
+    boop.currentTime = 0.5;
+    boop.play();
+
     if(category_ID == 0) {
         const randomIndex = Math.floor(Math.random() * geeky.length);
         // Set the text to a random string from the container
@@ -3017,10 +3028,18 @@ function updateGuessWord() {
   }
 
   function nextCategory() {
+    boop.currentTime = 0.5;
+    boop.play();
+    ticker.pause();
     category_ID = (category_ID + 1) % NUM_CATEGORIES;
     console.log(category_ID);
     categoryElement.textContent = CATEGORIES[category_ID];
   }
+
+  ticker.addEventListener("ended", function() {
+    guessWordElement.textContent = "TIME'S UP";
+    nextButton.textContent = "PLAY AGAIN";
+  });
 
 // Attach the function to the button's click event
 nextButton.addEventListener("click", updateGuessWord);
