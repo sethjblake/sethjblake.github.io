@@ -46,8 +46,8 @@
 button {
     background: none;
     border: none;
-    height: 70px;
-    width: 200px;
+    height: 45px;
+    width: 100px;
     font-size: 36px;
     color:rgb(247, 187, 255);
 }
@@ -72,9 +72,9 @@ button:hover {
 
 #headshot {
     position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 45px;
+    width: 60px;
+    height: 60px;
+    left: 20px;
     top: 10px;
 }
 
@@ -85,16 +85,16 @@ button:hover {
 
 h1 {
     font-weight: normal;
-    font-size: 54px;
+    font-size: 28px;
     margin: 0px;
-    padding-top: 24px;
+    padding-top: 15px;
 }
 
 .subtitle {
     padding-top: 0px;
     padding-bottom: 0px;
     color: rgb(247, 187, 255);
-    font-size: 36px;
+    font-size: 18px;
 }
 
 .corner-icon{
@@ -125,7 +125,7 @@ h4{
     margin-top: 10vh;
     margin-bottom: 10vh;
     width: 80%;
-    height: 600px;
+    height: 300px;
     background: linear-gradient(to left, rgba(0,0,0,0), rgba(243, 112, 214, 0.2));
     /* background-color: rgba(255, 185, 240, 0.2); */
     border-radius: 25px;
@@ -161,16 +161,16 @@ h4{
 }
 
 .topic-text-block{
-    padding-top: 100px;
-    padding-left: 180px;
+    padding-top: 50px;
+    padding-left: 90px;
 }
 
 .topic-title{
     color: white;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 0px;
     margin: 0px;
-    font-size: 86px;
+    font-size: 42px;
 }
 
 .topic-column {
@@ -187,14 +187,14 @@ h4{
     color: rgb(247, 187, 255);
     padding: 0px;
     margin: 0px;
-    font-size: 68px;
+    font-size: 34px;
 }
 
 
 .topic-image{
     position:relative;
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     border-radius: 25px;
 }
 
@@ -210,9 +210,9 @@ h4{
 }
 
 .description-text-block{
-    padding-top: 100px;
-    padding-left: 100px;   
-    padding-right: 100px;   
+    padding-top: 50px;
+    padding-left: 50px;   
+    padding-right: 50px;   
 }
 
 .subheading{
@@ -223,13 +223,13 @@ h4{
 }
 
 .play-button {
-    width: 250px;
+    width: 125px;
     background-color: transparent;
     border: solid rgb(247, 187, 255);;
     color: rgb(247, 187, 255);;
-    border-radius: 60px;
-    height: 80px;
-    font-size: 28px;
+    border-radius: 30px;
+    height: 40px;
+    font-size: 14px;
 }
 
 .play-button:hover {
@@ -241,6 +241,6 @@ h4{
 
 .cutout {
     position: absolute;
-    height: 600px;
-    left: 1300px;
+    height: 300px;
+    left: 650px;
 }
