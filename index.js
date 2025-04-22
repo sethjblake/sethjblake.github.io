@@ -27,6 +27,10 @@ $(document).ready(() => {
     $('#drillhammer-play-button').click(function() {
         openLink('https://sjblake.itch.io/drillhammer');
     });
+
+    $('#swornfish-play-button').click(function() {
+        openLink('https://rhansen3.itch.io/swornfish');
+    });
     
     $('#about-me-button').click(function() {
         openLink('https://sjblake.itch.io/drillhammer');
